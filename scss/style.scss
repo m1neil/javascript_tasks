@@ -1,0 +1,49 @@
+@use "sass:math";
+@import "base/reset";
+@import "base/mixins";
+
+.wrapper {
+	min-height: 100%;
+	overflow: clip;
+	display: flex;
+	flex-direction: column;
+	& > main {
+		flex-grow: 1;
+	}
+}
+
+$mainColor: #fff;
+$fontFamily: "Arial";
+$fontSize: toRem(18);
+
+body {
+	background-color: #333;
+	font-size: $fontSize;
+	color: $mainColor;
+	font-family: $fontFamily;
+}
+
+// Мінімальна ширина сторінки
+$minWidth: 320;
+// Ширина полотна (макету)
+$maxWidth: 1920;
+// Ширина обмежуючого контейнера (0 = немає обмеження)
+$maxWidthContainer: 1290;
+// Загальний відступ у контейнера
+// (30 = по 15px ліворуч і праворуч, 0 = немає відступу)
+$containerPadding: 30;
+// Ширина спрацьовування першого брейкпоінту
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+$pc: toEm($containerWidth);
+$tablet: toEm(991.98);
+$mobile: toEm(767.98);
+$mobileSmall: toEm(479.98);
+
+[class*="__container"] {
+	max-width: toRem($containerWidth);
+	margin-inline: auto;
+	padding-inline: toRem($containerPadding / 2);
+}
+
+@import "home";

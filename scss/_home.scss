@@ -1,0 +1,263 @@
+.page {
+	padding-block: toRem(50);
+
+	hr {
+		height: toRem(2);
+		background-color: gray;
+		&:not(:last-child) {
+			margin-bottom: toRem(15);
+		}
+	}
+	// .page__container
+	&__container {
+	}
+	// .page__title
+	&__title {
+		font-size: toRem(25);
+		font-weight: 700;
+		&:not(:last-child) {
+			margin-bottom: toRem(25);
+		}
+	}
+	// .page__text
+	&__text {
+		line-height: 1.3;
+		&:not(:last-child) {
+			margin-bottom: toRem(15);
+		}
+	}
+	&__back {
+		position: relative;
+		color: #8c71a5;
+		font-size: toRem(18);
+		padding-inline-start: toRem(15);
+		&:not(:last-child) {
+			margin-block-end: toRem(15);
+		}
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			inline-size: toRem(10);
+			block-size: toRem(2);
+			inset-inline-start: 0;
+			background-color: #77608d;
+			transition: inset-inline-start 0.3s;
+		}
+		&::before {
+			inset-block-start: toRem(8);
+			transform: rotate(-45deg);
+		}
+		&::after {
+			transform: rotate(45deg);
+			inset-block-end: toRem(9.5);
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				&::before,
+				&::after {
+					inset-inline-start: toRem(-4);
+				}
+			}
+		}
+	}
+	&__list {
+		&:not(:last-child) {
+			margin-block-end: toRem(25);
+		}
+	}
+
+	.table {
+		&:not(:last-child) {
+			margin-block-end: toRem(20);
+		}
+	}
+
+	&__tables {
+		display: flex;
+		align-items: flex-start;
+		column-gap: toRem(40);
+		table {
+			td {
+				min-inline-size: toRem(42);
+				text-align: center;
+			}
+		}
+	}
+}
+
+div {
+	line-height: 1.4;
+}
+
+.list-page {
+	counter-reset: number;
+	// .list-page__item
+	&__item {
+		&:not(:last-child) {
+			padding-block-end: toRem(15);
+			border-bottom: toRem(2) solid gray;
+			margin-block-end: toRem(15);
+		}
+		&::before {
+			counter-increment: number;
+			content: counter(number) ")";
+			transition: color 0.3s;
+			margin-inline-end: toRem(5);
+		}
+		&:has(a:hover)::before {
+			color: #7a956b;
+		}
+	}
+	&__title {
+		display: inline-block;
+		a {
+			transition: color 0.3s;
+			@media (any-hover: hover) {
+				&:hover {
+					color: #7a956b;
+				}
+			}
+		}
+	}
+	&__wrap {
+		margin-block-start: toRem(10);
+		padding-inline-start: toRem(25);
+	}
+	&__text {
+		line-height: 1.3;
+		&:not(:last-child) {
+			margin-bottom: toRem(8);
+		}
+	}
+	&__img {
+		max-inline-size: 100%;
+		&:not(:last-child) {
+			margin-bottom: toRem(10);
+		}
+	}
+}
+
+.info {
+	color: red;
+	font-size: toRem(25);
+}
+
+.table {
+	border-collapse: collapse;
+	font-size: toRem(16);
+	letter-spacing: toRem(1);
+	caption {
+		margin-block-end: toRem(5);
+		font-weight: 600;
+	}
+	th {
+		font-weight: 700;
+		border: toRem(2) solid #fff;
+		padding: toRem(12) toRem(10);
+	}
+	&__thead {
+		background-color: gray;
+	}
+	&__tbody,
+	&__tfoot {
+		th,
+		td {
+			border: toRem(2) solid gray;
+			padding: toRem(12) toRem(10);
+		}
+	}
+	&__tfoot {
+		th {
+			text-align: right;
+		}
+	}
+}
+
+.menu {
+	// .menu__list
+	&__list {
+	}
+}
+.menu-list {
+	counter-reset: step;
+	&--start-3 {
+		counter-reset: step 2;
+	}
+	// .menu-list__item
+	&__item {
+		display: flex;
+		column-gap: toRem(5);
+		&::before {
+			content: counter(step) ".";
+			counter-increment: step;
+		}
+	}
+}
+
+.victory {
+	font-weight: 700;
+	font-size: toRem(25);
+	color: green;
+}
+
+hr {
+	margin-block-start: toRem(15);
+}
+
+.list {
+	&__item {
+		display: flex;
+		column-gap: toRem(10);
+		align-items: center;
+		&:not(:last-child) {
+			margin-block-end: toRem(10);
+		}
+		&::before {
+			content: "";
+			inline-size: toRem(10);
+			block-size: toRem(10);
+			background-color: #77608d;
+			border-radius: 50%;
+		}
+	}
+}
+
+.form {
+	&__row {
+		&:not(:last-child) {
+			margin-block-end: toRem(15);
+		}
+	}
+	&__label {
+		display: flex;
+		column-gap: toRem(10);
+		align-items: center;
+		input {
+			align-self: flex-start;
+			max-inline-size: toRem(200);
+			block-size: toRem(35);
+			background-color: #fff;
+			border: toRem(1) solid gray;
+			padding-inline: toRem(15);
+			border-radius: toRem(5);
+			color: #000;
+		}
+	}
+}
+
+.images-game {
+	display: flex;
+	align-items: center;
+	column-gap: toRem(25);
+	&__item {
+		flex-basis: toRem(200);
+		aspect-ratio: 1;
+		flex-shrink: 0;
+		img {
+			inline-size: 100%;
+			block-size: 100%;
+			object-fit: contain;
+		}
+	}
+}
