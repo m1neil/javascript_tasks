@@ -141,6 +141,9 @@ div {
 .info {
 	color: red;
 	font-size: toRem(25);
+	&--green {
+		color: green;
+	}
 }
 
 .table {

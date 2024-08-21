@@ -1,18 +1,15 @@
 'use strict'
 
-// З клавіатури вводиться число. Знаходити суму цифр до тих пір. Поки сума не стане більшую за 20.
+if (confirm('Розпочати тестування')) {
+	let sum = 0
 
-// const start = 65, end = 90
-// const output = document.querySelector('.page__container')
+	do {
+		console.log(sum)
+		sum += parseFloat(prompt('Ведіть число:'))
+	} while (sum <= 20);
 
-// for (let i = start; i <= end; i++) {
-// 	if (i === start)
-// 		output.insertAdjacentHTML('beforeend',
-// 			`<div>Попереднього немає, ${String.fromCharCode(i)}, ${String.fromCharCode(i + 1)}</div>`)
-// 	else if (i === end)
-// 		output.insertAdjacentHTML('beforeend',
-// 			`<div>${String.fromCharCode(i - 1)}, ${String.fromCharCode(i)}, Наступного немає,</div>`)
-// 	else
-// 		output.insertAdjacentHTML('beforeend',
-// 			`<div>${String.fromCharCode(i - 1)}, ${String.fromCharCode(i)}, ${String.fromCharCode(i + 1)}</div>`)
-// }    
+	document.querySelector('.page__container').insertAdjacentHTML('beforeend', `<div>Сума: ${sum}</div>`)
+}
+
+
+
