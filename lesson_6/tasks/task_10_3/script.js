@@ -11,7 +11,8 @@ if (confirm('Розпочати тестування:')) {
 	} while (userSum < costProduct);
 
 	if (userSum === costProduct)
-		document.querySelector('.page__container').insertAdjacentHTML('beforeend', '<div class="info info--green">Дякуємо за замовлення! Приходьте ще!</div>')
+		document.querySelector('.page__container').insertAdjacentHTML('beforeend',
+			'<div class="info info--green">Дякуємо за замовлення! Приходьте ще!</div>')
 }
 
 
