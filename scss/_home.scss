@@ -264,3 +264,86 @@ hr {
 		}
 	}
 }
+
+.page__game {
+	display: grid;
+	gap: toRem(10);
+	justify-items: start;
+	grid-template-columns: repeat(5, toRem(20));
+	input {
+		inline-size: toRem(20);
+		block-size: toRem(20);
+		appearance: none;
+		cursor: pointer;
+		border: toRem(1) solid grey;
+		&.--miss {
+			background-color: red;
+		}
+		&.--green {
+			background-color: green;
+		}
+		&.--blue {
+			background-color: blue;
+		}
+		&.--yellow {
+			background-color: yellow;
+		}
+	}
+}
+
+.page__health {
+	position: fixed;
+	inset-block-end: toRem(120);
+	inset-inline-start: toRem(120);
+	font-size: toRem(20);
+	span {
+		color: red;
+		font-weight: 700;
+		font-size: toRem(25);
+	}
+}
+
+.page__shells {
+	position: fixed;
+	inset-block-end: toRem(120);
+	inset-inline-end: toRem(820);
+	font-size: toRem(20);
+	span {
+		color: yellow;
+		font-weight: 700;
+		font-size: toRem(25);
+	}
+}
+
+.page__cannon {
+	position: fixed;
+	inset-block-end: toRem(180);
+	inset-inline-end: toRem(820);
+	font-size: toRem(20);
+	span {
+		color: green;
+		font-weight: 700;
+		font-size: toRem(25);
+	}
+}
+
+.play {
+	padding: toRem(10) toRem(30);
+	background-color: #77608d;
+	color: #fff;
+	border-radius: toRem(8);
+	transition: background-color 0.3s;
+
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: #5f4b72;
+		}
+	}
+	&:disabled {
+		cursor: default;
+		background-color: grey;
+	}
+	&:not(:last-child) {
+		margin-block-end: toRem(40);
+	}
+}

@@ -394,3 +394,89 @@ hr {
   -o-object-fit: contain;
      object-fit: contain;
 }
+
+.page__game {
+  display: grid;
+  gap: 0.625rem;
+  justify-items: start;
+  grid-template-columns: repeat(5, 1.25rem);
+}
+.page__game input {
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  cursor: pointer;
+  border: 0.0625rem solid grey;
+}
+.page__game input.--miss {
+  background-color: red;
+}
+.page__game input.--green {
+  background-color: green;
+}
+.page__game input.--blue {
+  background-color: blue;
+}
+.page__game input.--yellow {
+  background-color: yellow;
+}
+
+.page__health {
+  position: fixed;
+  inset-block-end: 7.5rem;
+  inset-inline-start: 7.5rem;
+  font-size: 1.25rem;
+}
+.page__health span {
+  color: red;
+  font-weight: 700;
+  font-size: 1.5625rem;
+}
+
+.page__shells {
+  position: fixed;
+  inset-block-end: 7.5rem;
+  inset-inline-end: 51.25rem;
+  font-size: 1.25rem;
+}
+.page__shells span {
+  color: yellow;
+  font-weight: 700;
+  font-size: 1.5625rem;
+}
+
+.page__cannon {
+  position: fixed;
+  inset-block-end: 11.25rem;
+  inset-inline-end: 51.25rem;
+  font-size: 1.25rem;
+}
+.page__cannon span {
+  color: green;
+  font-weight: 700;
+  font-size: 1.5625rem;
+}
+
+.play {
+  padding: 0.625rem 1.875rem;
+  background-color: #77608d;
+  color: #fff;
+  border-radius: 0.5rem;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+@media (any-hover: hover) {
+  .play:hover {
+    background-color: #5f4b72;
+  }
+}
+.play:disabled {
+  cursor: default;
+  background-color: grey;
+}
+.play:not(:last-child) {
+  -webkit-margin-after: 2.5rem;
+          margin-block-end: 2.5rem;
+}
