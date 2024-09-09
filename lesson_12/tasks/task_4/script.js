@@ -30,14 +30,19 @@ function bubbleSort(array) {
 }
 
 function includesSort(array) {
+	const output = document.querySelector('#includes-sort');
 	for (let i = 1; i < array.length; i++) {
 		const currentElement = array[i];
 		let k = i - 1
+		insertTable(createTable(array, i, -1, true), output)
+
 		while (k >= 0 && array[k] > currentElement) {
+
 			array[k + 1] = array[k]
 			k--
 		}
 		array[k + 1] = currentElement
+		insertTable(createTable(array, k + 1, true), output)
 	}
 }
 
