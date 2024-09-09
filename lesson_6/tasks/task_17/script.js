@@ -1,4 +1,5 @@
 'use strict'
+
 const gameField = document.querySelector('.page__game')
 const interfaceHealth = document.querySelector('.page__health span')
 const interfaceShells = document.querySelector('.page__shells span')

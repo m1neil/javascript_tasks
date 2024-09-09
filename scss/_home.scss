@@ -8,6 +8,12 @@
 			margin-bottom: toRem(15);
 		}
 	}
+
+	&__wrap {
+		&:not(:last-child) {
+			margin-block-end: toRem(15);
+		}
+	}
 	// .page__container
 	&__container {
 	}
@@ -84,6 +90,12 @@
 			}
 		}
 	}
+
+	&__data {
+		&:not(:last-child) {
+			margin-bottom: toRem(30);
+		}
+	}
 }
 
 div {
@@ -108,6 +120,19 @@ div {
 		&:has(a:hover)::before {
 			color: #7a956b;
 		}
+		&--gred {
+			display: grid;
+			grid-template-columns: auto 1fr;
+			row-gap: toRem(15);
+			column-gap: toRem(5);
+			img {
+				max-width: 100%;
+				grid-column: span 2;
+			}
+			.list-page__result {
+				grid-column: span 2;
+			}
+		}
 	}
 	&__title {
 		display: inline-block;
@@ -123,6 +148,12 @@ div {
 	&__wrap {
 		margin-block-start: toRem(10);
 		padding-inline-start: toRem(25);
+		& > * {
+			margin-block-end: toRem(15);
+		}
+		& > *:last-child {
+			margin-block-end: 0;
+		}
 	}
 	&__text {
 		line-height: 1.3;
@@ -161,6 +192,19 @@ div {
 	}
 	&__thead {
 		background-color: gray;
+		th,
+		td {
+			border: toRem(2) solid white;
+		}
+		td {
+			padding-inline: toRem(10);
+			text-align: center;
+			font-weight: 700;
+		}
+		th {
+			text-align: center;
+			font-weight: 700;
+		}
 	}
 	&__tbody,
 	&__tfoot {
@@ -168,6 +212,25 @@ div {
 		td {
 			border: toRem(2) solid gray;
 			padding: toRem(12) toRem(10);
+			text-align: center;
+		}
+		td {
+			&.green {
+				background-color: green;
+			}
+			&.red {
+				background-color: orangered;
+			}
+		}
+	}
+	&__tbody {
+		&--center {
+			th {
+				text-align: right;
+			}
+			td {
+				text-align: center;
+			}
 		}
 	}
 	&__tfoot {
@@ -345,5 +408,67 @@ hr {
 	}
 	&:not(:last-child) {
 		margin-block-end: toRem(40);
+	}
+}
+
+.mark-list {
+	&__item {
+		display: flex;
+		column-gap: toRem(10);
+		&:not(:last-child) {
+			margin-block-end: toRem(7);
+		}
+		&::before {
+			content: "";
+			flex-shrink: 0;
+			margin-block-start: toRem(9);
+			inline-size: toRem(8);
+			block-size: toRem(8);
+			background-color: #fff;
+			border-radius: 50%;
+		}
+	}
+}
+
+.code,
+.code > span {
+	display: block;
+}
+
+.game-field {
+	display: inline-grid;
+	grid-template-columns: repeat(6, toRem(25));
+	grid-template-rows: repeat(6, toRem(25));
+	grid-auto-rows: repeat(6, toRem(30));
+	gap: toRem(7);
+	&:not(.--end) input {
+		cursor: pointer;
+	}
+	&.--end input {
+		cursor: default;
+	}
+	input {
+		appearance: none;
+		display: block;
+		width: 100%;
+		height: 100%;
+		border: toRem(2) solid grey;
+
+		&.--miss,
+		&.--complete {
+			cursor: default;
+		}
+		&.--miss {
+			background-color: red;
+		}
+		&.--complete {
+			background-color: green;
+		}
+	}
+}
+
+.start-data {
+	&:not(:last-child) {
+		margin-bottom: toRem(15);
 	}
 }
