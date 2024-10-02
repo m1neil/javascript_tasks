@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Задача 3</title>
+		<link rel="stylesheet" href="../../../css/style.css">
+	</head>
+	<body>
+		<div class="wrapper">
+			<main class="page">
+				<div class="page__container">
+					<a href="../../index.html" class="page__back">Повернутися до списку задач</a>
+					<h1 class="page__title">Задача 3</h1>
+					<div class="page__wrap">
+						Створити клас Нагадувач. Кожні вказані кількості секунд (використати setInterval) програма нагадує про якусь подію (це просто текст) і також виводиться порядковий номер скільки раз вже нагадування було. Зробити так, щоб неможна було зробити одночасно декілька об’єктів-нагадувачів. Методи зупинки таймера, метод зміни повідомлення без зупинки таймера.
+					</div>
+					<input placeholder="Text your notification..." value="Деяке повідомлення" type="text" name="notification" id="notification" class="input">
+					<div class="buttons">
+						<button type="button" class="button" id="start">Start</button>
+						<button disabled type="button" class="button" id="stop">Stop</button>
+						<button type="button" class="button" id="clear">Clear</button>
+					</div>
+					<textarea disabled name="notifications" id="notifications" class="notifications" class="notifications"></textarea>
+				</div>
+			</main>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>

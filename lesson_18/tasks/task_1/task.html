@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Задача 1</title>
+		<link rel="stylesheet" href="../../../css/style.css">
+	</head>
+	<body>
+		<div class="wrapper">
+			<main class="page">
+				<div class="page__container">
+					<a href="../../index.html" class="page__back">Повернутися до списку задач</a>
+					<h1 class="page__title">Задача 1</h1>
+					<div class="page__wrap">Розробити калькулятор</div>
+					<div class="fields">
+						<div class="fields__line">
+							<label for="first-number" class="fields__label">First number</label>
+							<input type="number" value="0" name="first-number" id="first-number" class="fields__input input">
+						</div>
+						<div class="fields__line">
+							<label for="second-number" class="fields__label">Second number</label>
+							<input type="number" value="0" name="second-number" id="second-number" class="fields__input input">
+						</div>
+						<div class="fields__actions">
+							<button id="add" type="button" data-operation="+" class="fields__button button">Додати</button>
+							<button id="take-away" type="button" data-operation="-" class="fields__button button">Відняти</button>
+							<button id="multiply" type="button" data-operation="*" class="fields__button button">Помножити</button>
+							<button id="division" type="button" data-operation="/" class="fields__button button">Поділити</button>
+						</div>
+						<div class="fields__line">
+							<label for="result" class="fields__label">Результат</label>
+							<input type="number" value="0" name="result" id="result" class="fields__input input">
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>

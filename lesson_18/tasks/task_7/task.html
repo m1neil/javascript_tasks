@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Задача 7</title>
+		<link rel="stylesheet" href="../../../css/style.css">
+	</head>
+	<body>
+		<div class="wrapper">
+			<main class="page">
+				<div class="page__container">
+					<a href="../../index.html" class="page__back">Повернутися до списку задач</a>
+					<h1 class="page__title">Задача 7</h1>
+					<div class="page__wrap">
+						<label for="transport">Тип транспорту:</label>
+						<select class="transport" name="transport" id="transport">
+							<option selected value="car">авто</option>
+							<option value="bus">автобус</option>
+							<option value="plane">літак</option>
+						</select>
+						<div class="nutrition">
+							<label class="nutrition__label">
+								Сніданок
+								<input checked type="checkbox" name="breakfast" value="300" class="nutrition__input">
+							</label>
+							<label class="nutrition__label">
+								Обід
+								<input type="checkbox" name="lunch" value="350" class="nutrition__input">
+							</label>
+							<label class="nutrition__label">
+								Вечеря
+								<input type="checkbox" name="dinner" value="350" class="nutrition__input">
+							</label>
+						</div>
+						<div class="guides">
+							<label class="guides__label">
+								Гід Валера:
+								<input checked type="radio" name="guide" value="valera" class="guides__input">
+							</label>
+							<label class="guides__label">
+								Гід Дмитро:
+								<input type="radio" name="guide" value="dmitry" class="guides__input">
+							</label>
+							<label class="guides__label">
+								Гід Олександр:
+								<input type="radio" name="guide" value="alexander" class="guides__input">
+							</label>
+						</div>
+						<button type="button" id="calc-price" class="button">Підрахувати!</button>
+					</div>
+				</div>
+			</main>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>

@@ -1,12 +1,19 @@
 'use strict'
 
-const array = getArrayWithRandomValues(30, 8, 100)
-sortArray(array, bubbleSort)
+const output = document.querySelector('.page__container');
+const array = getArrayWithRandomValues(30, 10, 100)
+
+insertTable(createTable(array), output)
+const [quantityComparisons, quantityChanges] = sortArray(array, bubbleSort)
+insertTable(createTable(array), output)
+output.insertAdjacentHTML('beforeend', `
+	<div>Кількість порівнянь: ${quantityComparisons}</div>
+	<div>Кількість обмінів: ${quantityChanges}</div>
+`)
+
 
 function sortArray(array, typeSort) {
-	console.log(`Масив до сортування: ${array.join(', ')}`);
-	typeSort(array)
-	console.log(`Масив після сортування: ${array.join(', ')}`);
+	return typeSort(array)
 }
 
 function getArrayWithRandomValues(quantity, min, max) {
@@ -34,9 +41,34 @@ function bubbleSort(array) {
 		}
 		lastIndex--
 	}
-	console.log('quantityComparisons: ', quantityComparisons);
-	console.log('quantityChanges: ', quantityChanges);
+
+	return [quantityComparisons, quantityChanges]
 }
 
+function createTable(array, indexGreenHighlight, indexRedHighlight, isNotAddMargin) {
+	const table = document.createElement('table')
+	table.classList.add('table')
+	if (isNotAddMargin)
+		table.style.marginBottom = 0
+	const tbody = table.createTBody()
+	tbody.classList.add('table__tbody')
+	const tr = document.createElement('tr')
+	for (let i = 0; i < array.length; i++) {
+		let className = ''
+		switch (i) {
+			case indexGreenHighlight:
+				className = 'green'
+				break;
+			case indexRedHighlight:
+				className = 'red'
+				break;
+		}
+		tr.insertAdjacentHTML('beforeend', `<td class="${className}">${array[i]}</td>`)
+	}
+	tbody.append(tr)
+	return table
+}
 
-
+function insertTable(table, wrapper) {
+	wrapper.append(table)
+}

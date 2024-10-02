@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Задача 5</title>
+		<link rel="stylesheet" href="../../../css/style.css">
+	</head>
+	<body>
+		<div class="wrapper">
+			<main class="page">
+				<div class="page__container">
+					<a href="../../index.html" class="page__back">Повернутися до списку задач</a>
+					<h1 class="page__title">Задача 5</h1>
+					<div class="page__wrap">
+						Дано два класи MultChecker (клас для перевірки таблиці множення - рандомно генеруються числа, які треба перемножати), AddChecker (клас для перевірки додавання - рандомно генеруються числа у заданому діапазоні, які треба додавати). Обидва класи надсилають результати тестування об'єкту класу Hystory, який зберігає історію тестування у масиві у вигляді об'єктів
+						Приклад.
+						<code>
+							<div>testsList= [</div>
+							<div style="margin-left: 40px;">{firstNum:1, secondNum:5,opration:’*’, userAnswer:7, correctAnswer:5},</div>
+							<div style="margin-left: 40px;">{firstNum:3, secondNum:4,opration:’+’, userAnswer:7, correctAnswer:7},</div>
+							<div>]</div>
+						</code>
+						Можна створити окремий клас TestData, який описує один такий тест і у якому будуть ці поля.
+						Розробити клас TestManager, який використовуючи ці класи за допомогою таймера періодично генерує якісь N задач (рандомно вибираємо, що опитувати: додавання чи множення) і проводить опитування. Результати тестування додаються в об’єкт History. Зробити так, щоб об'єкт такого класу можна було створити тільки один. Коли зроблено ці N задач вивести усю історію на екран.
+					</div>
+				</div>
+			</main>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>
