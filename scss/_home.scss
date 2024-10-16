@@ -181,6 +181,9 @@ div {
 	border-collapse: collapse;
 	font-size: toRem(16);
 	letter-spacing: toRem(1);
+	&.--border-red {
+		border: toRem(3) solid red;
+	}
 	caption {
 		margin-block-end: toRem(5);
 		font-weight: 600;
@@ -293,6 +296,21 @@ hr {
 		}
 		.correct {
 			background-color: green;
+		}
+	}
+	&__button {
+		padding: toRem(5);
+		transition:
+			border-color 0.3s,
+			color 0.3s;
+		border: toRem(1) solid transparent;
+		@media (any-hover: hover) {
+			&:hover {
+				color: #77608d;
+			}
+		}
+		&.--active {
+			border-color: #77608d;
 		}
 	}
 }
@@ -548,6 +566,9 @@ hr {
 	padding: toRem(10) toRem(25);
 	border-radius: toRem(8);
 	transition: background-color 0.3s;
+	&--bg-green {
+		background-color: #7a956b;
+	}
 	&:disabled {
 		cursor: default;
 		background-color: gray;
@@ -555,6 +576,11 @@ hr {
 	@media (any-hover: hover) {
 		&:not(:disabled):hover {
 			background-color: #5d4a6f;
+		}
+		&--bg-green {
+			&:not(:disabled):hover {
+				background-color: #687e5b;
+			}
 		}
 	}
 }
@@ -600,7 +626,7 @@ hr {
 .buttons {
 	display: flex;
 	flex-wrap: wrap;
-	column-gap: toRem(10);
+	gap: toRem(10);
 	&:not(:last-child) {
 		margin-bottom: toRem(10);
 	}
@@ -745,4 +771,540 @@ hr {
 	}
 }
 .button {
+}
+
+.clickable {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	row-gap: toRem(15);
+	&__item {
+		background-color: #77608d;
+		padding: toRem(7) toRem(15);
+		border-radius: toRem(5);
+		transition: background-color 0.3s;
+		cursor: pointer;
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: #59476a;
+			}
+		}
+		&--red {
+			background-color: red;
+			@media (any-hover: hover) {
+				&:hover {
+					background-color: rgb(199, 2, 2);
+				}
+			}
+		}
+	}
+}
+
+.inputs {
+	max-width: toRem(300);
+}
+
+.line {
+	display: flex;
+	align-items: center;
+	column-gap: toRem(15);
+	&__label {
+		flex-shrink: 0;
+	}
+	&__input {
+		border: toRem(1) solid gray;
+		height: toRem(40);
+		padding-inline: toRem(15);
+	}
+	&:not(:last-child) {
+		margin-bottom: toRem(15);
+	}
+}
+
+.some-list {
+	counter-reset: index;
+	&.--even {
+		background-color: green;
+	}
+	&.--odd {
+		background-color: red;
+	}
+	&:not(:last-child) {
+		margin-bottom: toRem(10);
+		padding-bottom: toRem(10);
+		border-bottom: toRem(1) solid gray;
+	}
+	&__item {
+		display: flex;
+		column-gap: toRem(10);
+		&::before {
+			content: counter(index) ".";
+			counter-increment: index;
+		}
+	}
+}
+
+.amount-click {
+	// display: flex;
+	// column-gap: toRem(5);
+	&::after {
+		content: attr(data-amount);
+	}
+}
+
+.product-list {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: toRem(10);
+}
+
+.card {
+	padding: toRem(10);
+	display: flex;
+	flex-direction: column;
+	row-gap: toRem(10);
+	border: toRem(3) solid transparent;
+	transition: border-color 0.3s;
+	&--border-green {
+		border-color: green;
+	}
+	&__label {
+		align-self: flex-start;
+		background-color: orange;
+		color: #fff;
+		text-transform: uppercase;
+		border-radius: toRem(15);
+		padding: toRem(7) toRem(10);
+		line-height: 16px;
+		font-size: toRem(16);
+		&.--stock {
+			background-color: red;
+		}
+	}
+	&__img {
+		background-color: white;
+		aspect-ratio: 1 / 0.8;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+	&__title {
+		flex-grow: 1;
+	}
+}
+
+.athletes {
+	&__title {
+		&:not(:last-child) {
+			margin-bottom: toRem(10);
+		}
+	}
+	&__list {
+	}
+}
+
+.list-athletes {
+	padding: toRem(10);
+	border: toRem(1) solid white;
+	&__item {
+		padding: toRem(5);
+		border: toRem(1) solid white;
+		display: flex;
+		align-items: center;
+		column-gap: toRem(10);
+		justify-content: space-between;
+		&:not(:last-child) {
+			margin-bottom: toRem(10);
+		}
+	}
+	&__button {
+		width: toRem(30);
+		height: toRem(20);
+		background: url("../img/arrow-right.svg") center / toRem(22) no-repeat;
+		&.--arrow-left {
+			transform: rotate(-180deg);
+			background-image: url("../img/arrow-left.svg");
+		}
+	}
+}
+
+.lists {
+	display: flex;
+	gap: toRem(20);
+	flex-wrap: wrap;
+	.athletes {
+		flex: 0 1 toRem(220);
+	}
+}
+
+.snowflake {
+	will-change: top;
+	transition-property: top;
+	transition-timing-function: linear;
+	animation: rotate-snowflake 5s infinite linear;
+}
+
+@keyframes rotate-snowflake {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.star {
+	opacity: 0;
+	&.--show {
+		animation: show-star 0.6s linear forwards;
+	}
+	&.--hide {
+		animation: hide-star 0.6s linear forwards;
+	}
+}
+
+@keyframes show-star {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes hide-star {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.tank {
+	position: fixed;
+	top: 20%;
+	left: 30%;
+	width: toRem(126);
+	aspect-ratio: 1;
+	transform: rotate(180deg);
+	transition: transform 3s;
+	cursor: pointer;
+	&--show {
+		animation: show-tank 0.6s forwards linear;
+	}
+	img {
+		max-width: 100%;
+	}
+	&--rotate {
+		transform: rotate(0);
+	}
+	// .tank__hull
+	&__hull {
+	}
+	// .tank__gun
+	&__gun {
+		position: absolute;
+		left: 50%;
+		top: 0;
+		width: percent(94, 256);
+		transform-origin: center 75%;
+		transition: transform 0.3s;
+		transform: translate(-50%, 0) rotate(0);
+		.tank:not(.tank--destroyed) & {
+			animation: move-gun 6s infinite linear;
+		}
+	}
+	// .tank__track
+	&__track {
+		position: absolute;
+		top: toRem(5);
+		z-index: -1;
+		height: 100%;
+		&--left {
+			left: percent(36, 256);
+		}
+		// .tank__track--right
+		&--right {
+			right: percent(36, 256);
+		}
+	}
+	&__explosion {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		aspect-ratio: 1;
+		opacity: 0;
+		.tank--destroyed & {
+			animation: increase-explosion 0.4s forwards linear;
+		}
+	}
+}
+
+@keyframes increase-explosion {
+	0% {
+		opacity: 0;
+		transform: scale(0.5);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1.5);
+	}
+}
+
+@keyframes move-gun {
+	0% {
+		transform: translate(-50%, 0) rotate(0);
+	}
+	15%,
+	25% {
+		transform: translate(-50%, 0) rotate(-45deg);
+	}
+	40%,
+	50% {
+		transform: translate(-50%, 0) rotate(0);
+	}
+	70%,
+	80% {
+		transform: translate(-50%, 0) rotate(45deg);
+	}
+	90%,
+	100% {
+		transform: translate(-50%, 0) rotate(0);
+	}
+}
+
+@keyframes show-tank {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.inputs {
+	&:not(:first-child) {
+		margin-top: toRem(25);
+	}
+	&:not(:last-child) {
+		margin-bottom: toRem(20);
+	}
+}
+
+.amount-clicks {
+	&__item {
+		&:not(:last-child) {
+			margin-bottom: toRem(7);
+		}
+		&::after {
+			content: attr(data-amount);
+		}
+	}
+}
+
+//===========================================================================
+
+.translator {
+	display: flex;
+	column-gap: toRem(20);
+	.lang-list {
+		flex: 0 1 toRem(150);
+		border: toRem(1) solid #fff;
+		padding: toRem(15);
+	}
+}
+
+.lang-list {
+	&__item {
+		&:not(:last-child) {
+			margin-bottom: toRem(10);
+		}
+	}
+	&__button {
+		width: 100%;
+		text-align: left;
+		font-size: toRem(22);
+		transition:
+			color 0.3s,
+			border-color 0.3s;
+		border: toRem(1) solid #fff;
+		padding: toRem(5) toRem(10);
+		&.--active {
+			border-color: blue;
+			.--correct-answer & {
+				border-color: green;
+			}
+			.--wrang-answer & {
+				border-color: red;
+			}
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				color: #7a956b;
+			}
+		}
+	}
+}
+
+//===========================================================================
+.cart {
+	// .cart__items
+	&__items {
+		margin-bottom: toRem(25);
+	}
+	// .cart__product
+	&__product {
+		&:not(:last-child) {
+			margin-bottom: toRem(20);
+		}
+	}
+	// .cart__total-price
+	&__total-price {
+		display: flex;
+		column-gap: toRem(7);
+		font-size: toRem(30);
+		&::after {
+			content: attr(data-price) " грн.";
+		}
+	}
+}
+.product-cart {
+	border: toRem(2) solid lightblue;
+	border-radius: toRem(8);
+	padding: toRem(10);
+	display: flex;
+	column-gap: toRem(25);
+	align-items: center;
+	// .product-cart__preview
+	&__preview {
+		width: toRem(80);
+		aspect-ratio: 1;
+		flex-shrink: 0;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+	// .product-cart__title
+	&__title {
+		a {
+			transition: color 0.3s;
+			@media (any-hover: hover) {
+				&:hover {
+					color: #7a956b;
+				}
+			}
+		}
+	}
+	// .product-cart__quantity
+	&__quantity {
+	}
+	// .product-cart__total-price
+	&__total-price {
+		display: flex;
+		column-gap: toRem(5);
+		font-weight: 700;
+		color: #fff;
+		&::after {
+			content: attr(data-price) " грн.";
+		}
+	}
+	// .product-cart__delete
+	&__delete {
+		position: relative;
+		width: toRem(30);
+		aspect-ratio: 1;
+		border: toRem(2) solid red;
+		transition: border-color 0.3s;
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			width: toRem(20);
+			height: toRem(2);
+			top: 50%;
+			left: 50%;
+			background-color: red;
+			transition: background-color 0.3s;
+		}
+		&::before {
+			transform: translate(-50%, -50%) rotate(45deg);
+		}
+		&::after {
+			transform: translate(-50%, -50%) rotate(-45deg);
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				border-color: rgb(198, 2, 2);
+				&::before,
+				&::after {
+					background-color: rgb(198, 2, 2);
+				}
+			}
+		}
+	}
+}
+.quantity {
+	display: inline-flex;
+	column-gap: toRem(5);
+	// .quantity__button
+	&__button {
+		position: relative;
+		width: toRem(30);
+		aspect-ratio: 1;
+		border-radius: toRem(5);
+		border: toRem(2) solid white;
+		transition:
+			border-color 0.3s,
+			opacity 0.3s;
+		&:disabled {
+			opacity: 0.2;
+		}
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: toRem(10);
+			height: toRem(2);
+			background-color: #fff;
+			transform: translate(-50%, -50%);
+			transition: background-color 0.3s;
+		}
+		// .quantity__button--decrease
+		&--decrease {
+			&::after {
+				display: none;
+			}
+		}
+		// .quantity__button--increase
+		&--increase {
+			&::after {
+				height: toRem(10);
+				width: toRem(2);
+			}
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				border-color: #7a956b;
+				&::before,
+				&::after {
+					background-color: #7a956b;
+				}
+			}
+		}
+	}
+	// .quantity__input
+	&__input {
+		width: toRem(60);
+		input {
+			text-align: center;
+			width: 100%;
+			height: 100%;
+		}
+	}
 }

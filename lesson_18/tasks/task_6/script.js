@@ -24,8 +24,7 @@ function windowLoaded() {
 
 		const buttonGetMiddleAverage = createElement('button', 'button', 'get middle average', 'button')
 		buttonGetMiddleAverage.addEventListener('click', () => {
-			removeElement('.middle-average')
-			removeElement('.error')
+			removeElement('.middle-average', '.error')
 			try {
 				const middleAverage = calcMiddleAverage('input.assessment')
 				const middleAverageDiv = createElement('div', 'middle-average', `middle average = ${middleAverage.toFixed(1)}`)
@@ -73,9 +72,11 @@ function createTable(amountRow = 1, amountCol = 4) {
 	return table
 }
 
-function removeElement(selector) {
-	const element = document.querySelector(selector)
-	if (element) element.remove()
+function removeElement(...selectors) {
+	selectors.forEach(selector => {
+		const element = document.querySelector(selector)
+		if (element) element.remove()
+	})
 }
 
 function createElement(tag = 'div', className = '', content = '', type = '', value, minValue, maxValue) {

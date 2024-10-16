@@ -9,10 +9,10 @@ function windowLoaded() {
 	const buttonCalcAge = document.querySelector('#calc-age')
 
 	buttonCalcAge.addEventListener('click', () => {
+		removeElement('.error')
 		try {
 			inputUserAge.value = calcUserAge(parseInt(inputUserYearBirth.value))
 		} catch (error) {
-			removeElement('.error')
 			const errorDiv = createElement('div', 'error info', error.message)
 			container.append(errorDiv)
 			inputUserAge.value = ''
@@ -53,4 +53,9 @@ function createElement(tag = 'div', className = '', content = '', type = '', val
 		element.type = type
 
 	return element
+}
+
+function removeElement(selector) {
+	const element = document.querySelector(selector)
+	if (element) element.remove()
 }
