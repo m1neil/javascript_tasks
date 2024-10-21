@@ -213,6 +213,9 @@ div {
 .list-page {
   counter-reset: number;
 }
+.list-page:not(:last-child) {
+  margin-bottom: 1.5625rem;
+}
 .list-page__item:not(:last-child) {
   -webkit-padding-after: 0.9375rem;
           padding-block-end: 0.9375rem;
@@ -702,6 +705,9 @@ hr {
 .button:disabled {
   cursor: default;
   background-color: gray;
+}
+.button.--active {
+  background-color: #5d4a6f;
 }
 @media (any-hover: hover) {
   .button:not(:disabled):hover {
@@ -1529,6 +1535,7 @@ hr {
 }
 .quantity__button:disabled {
   opacity: 0.2;
+  cursor: default;
 }
 .quantity__button::before, .quantity__button::after {
   content: "";
@@ -1552,10 +1559,10 @@ hr {
   width: 0.125rem;
 }
 @media (any-hover: hover) {
-  .quantity__button:hover {
+  .quantity__button:hover:not(:disabled) {
     border-color: #7a956b;
   }
-  .quantity__button:hover::before, .quantity__button:hover::after {
+  .quantity__button:hover:not(:disabled)::before, .quantity__button:hover:not(:disabled)::after {
     background-color: #7a956b;
   }
 }
@@ -1566,4 +1573,70 @@ hr {
   text-align: center;
   width: 100%;
   height: 100%;
+}
+
+.vacation {
+  display: grid;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  row-gap: 0.9375rem;
+}
+.vacation__label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 1.5625rem;
+     -moz-column-gap: 1.5625rem;
+          column-gap: 1.5625rem;
+}
+.vacation__label input {
+  width: 7.5rem;
+}
+.vacation__label input:not(:disabled) {
+  cursor: pointer;
+}
+
+.production {
+  display: grid;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  row-gap: 1.25rem;
+}
+.production__label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-column-gap: 1.25rem;
+     -moz-column-gap: 1.25rem;
+          column-gap: 1.25rem;
+}
+.production__label input[name=date-production] {
+  width: 7.5rem;
+  cursor: pointer;
+}
+.production__label input[name=days-suitability] {
+  width: 3.125rem;
+  text-align: center;
+  border: 0.0625rem solid gray;
+  height: 2.1875rem;
+}
+.production__button {
+  justify-self: start;
+}
+
+.bank__nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 1.25rem;
+     -moz-column-gap: 1.25rem;
+          column-gap: 1.25rem;
+}
+.bank__nav:not(:last-child) {
+  margin-bottom: 0.9375rem;
 }

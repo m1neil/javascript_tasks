@@ -104,6 +104,9 @@ div {
 
 .list-page {
 	counter-reset: number;
+	&:not(:last-child) {
+		margin-bottom: toRem(25);
+	}
 	// .list-page__item
 	&__item {
 		&:not(:last-child) {
@@ -243,11 +246,6 @@ div {
 	}
 }
 
-.menu {
-	// .menu__list
-	&__list {
-	}
-}
 .menu-list {
 	counter-reset: step;
 	&--start-3 {
@@ -573,6 +571,11 @@ hr {
 		cursor: default;
 		background-color: gray;
 	}
+
+	&.--active {
+		background-color: #5d4a6f;
+	}
+
 	@media (any-hover: hover) {
 		&:not(:disabled):hover {
 			background-color: #5d4a6f;
@@ -1262,6 +1265,7 @@ hr {
 			opacity 0.3s;
 		&:disabled {
 			opacity: 0.2;
+			cursor: default;
 		}
 		&::before,
 		&::after {
@@ -1289,7 +1293,7 @@ hr {
 			}
 		}
 		@media (any-hover: hover) {
-			&:hover {
+			&:hover:not(:disabled) {
 				border-color: #7a956b;
 				&::before,
 				&::after {
@@ -1305,6 +1309,60 @@ hr {
 			text-align: center;
 			width: 100%;
 			height: 100%;
+		}
+	}
+}
+
+.vacation {
+	display: grid;
+	justify-content: start;
+	// justify-items: start;
+	row-gap: toRem(15);
+
+	&__label {
+		display: flex;
+		column-gap: toRem(25);
+		input {
+			width: toRem(120);
+			&:not(:disabled) {
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+.production {
+	display: grid;
+	justify-content: start;
+	row-gap: toRem(20);
+	// .production__label
+	&__label {
+		display: flex;
+		align-items: center;
+		column-gap: toRem(20);
+		input[name="date-production"] {
+			width: toRem(120);
+			cursor: pointer;
+		}
+		input[name="days-suitability"] {
+			width: toRem(50);
+			text-align: center;
+			border: toRem(1) solid gray;
+			height: toRem(35);
+		}
+	}
+	// .production__button
+	&__button {
+		justify-self: start;
+	}
+}
+
+.bank {
+	&__nav {
+		display: flex;
+		column-gap: toRem(20);
+		&:not(:last-child) {
+			margin-bottom: toRem(15);
 		}
 	}
 }

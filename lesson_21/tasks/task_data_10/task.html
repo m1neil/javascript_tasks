@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Задача 10</title>
+		<link rel="stylesheet" href="../../../css/style.css">
+	</head>
+	<body>
+		<div class="wrapper">
+			<main class="page">
+				<div class="page__container">
+					<a href="../../index.html" class="page__back">Повернутися до списку задач</a>
+					<h1 class="page__title">Задача 10</h1>
+					<div class="page__wrap">
+						Дано дата виробництва йогурта (вводимо рік, місяць, день) та кількість днів придатності. Визначити чи є він придатним на даний момент.
+					</div>
+					<div class="production">
+						<label class="production__label">
+							Дата виробництва йогурту:
+							<input type="date" name="date-production" id="date-production">
+						</label>
+						<label class="production__label">
+							Кількість днів придатності:
+							<input type="number" value="1" min="1" name="days-suitability" id="suitability">
+						</label>
+						<button type="button" disabled class="production__button button">Підрахувати</button>
+						<div class="production__answer"></div>
+					</div>
+				</div>
+			</main>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>

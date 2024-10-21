@@ -195,30 +195,40 @@ class Quantity {
 		return button
 	}
 
-	toggleButton(button, limit) {
-		if (this.currentValue === limit)
+	updateButtonState(button, limitValue) {
+		if (this.currentValue === limitValue)
 			button.setAttribute('disabled', true)
 		else
 			button.removeAttribute('disabled')
 	}
 
+	toggleButtonsState() {
+		this.updateButtonState(this.increaseButton, this.maxValue)
+		this.updateButtonState(this.decreaseButton, this.minValue)
+	}
+
 	quantityEvents(e) {
 		const target = e.target
 
-		if (target.closest('.quantity__button--decrease') && this.currentValue > this.minValue) {
+		if (
+			target.closest('.quantity__button--decrease') &&
+			this.currentValue > this.minValue
+		) {
 			this.input.value = --this.currentValue
 			this.createEvent()
 		}
-
-		if (target.closest('.quantity__button--increase') && this.currentValue < this.maxValue) {
+		else if (
+			target.closest('.quantity__button--increase') &&
+			this.currentValue < this.maxValue
+		) {
 			this.input.value = ++this.currentValue
 			this.createEvent()
 		}
 
-		if (target.closest('.quantity__button--decrease') || target.closest('.quantity__button--increase')) {
-			this.toggleButton(this.increaseButton, this.maxValue)
-			this.toggleButton(this.decreaseButton, this.minValue)
-		}
+		if (
+			target.closest('.quantity__button--decrease') ||
+			target.closest('.quantity__button--increase')
+		) this.toggleButtonsState()
 	}
 
 	createEvent() {
@@ -232,7 +242,6 @@ class Quantity {
 		let value = parseInt(this.input.value)
 
 		if (isNaN(value)) {
-			// console.log('is Nan');
 			return
 		} else if (value < this.minValue) {
 			value = this.minValue
@@ -243,10 +252,8 @@ class Quantity {
 		}
 
 		this.currentValue = value
-		this.toggleButton(this.decreaseButton, this.minValue)
-		this.toggleButton(this.increaseButton, this.maxValue)
+		this.toggleButtonsState()
 		this.createEvent()
-		// console.log(this.currentValue);
 	}
 
 	fillEmptyField() {
@@ -255,9 +262,21 @@ class Quantity {
 		if (!value) {
 			this.currentValue = this.minValue
 			this.input.value = this.currentValue
-			this.toggleButton(this.decreaseButton, this.minValue)
+			this.toggleButtonsState()
 			this.createEvent()
 		}
+	}
+
+	createInput() {
+		const input = document.createElement('input')
+		input.type = this.type
+		input.value = this.currentValue
+		input.autocomplete = this.autocomplete
+		input.name = this.name
+		input.min = this.minValue
+		input.addEventListener('input', this.changeValue.bind(this))
+		input.addEventListener('focusout', this.fillEmptyField.bind(this))
+		return input
 	}
 
 	render(container) {
@@ -268,23 +287,14 @@ class Quantity {
 
 		const inputDiv = document.createElement('div')
 		inputDiv.className = 'quantity__input'
-
-		const input = document.createElement('input')
-		input.type = this.type
-		input.value = this.currentValue
-		input.autocomplete = this.autocomplete
-		input.name = this.name
-		input.min = this.minValue
-		input.addEventListener('input', this.changeValue.bind(this))
-		input.addEventListener('focusout', this.fillEmptyField.bind(this))
-		this.input = input
-		inputDiv.append(input)
+		this.input = this.createInput()
+		inputDiv.append(this.input)
 		wrapper.append(inputDiv)
 
 		this.decreaseButton = this.createButton()
 		this.increaseButton = this.createButton('increase')
-		this.toggleButton(this.decreaseButton, this.minValue)
-		this.toggleButton(this.increaseButton, this.maxValue)
+		this.toggleButtonsState()
+
 		wrapper.prepend(this.decreaseButton)
 		wrapper.append(this.increaseButton)
 		container.append(wrapper)
